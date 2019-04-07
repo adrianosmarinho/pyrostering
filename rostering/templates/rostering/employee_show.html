@@ -1,3 +1,15 @@
-<h1>Welcome, {{object.first_name}} {{object.last_name}}</h1>
+<h1>These are the shifts of: {{object.first_name}} {{object.last_name}}</h1>
 <!-- Display shifts, if any. Otherwise, shows a message -->
+<ul>
+    <li> <a href="{% url 'shift_new' object.id %}">Create a new shift for {{object.first_name}} {{object.last_name}}</a> </li>
+    {#<li> <a href="home">Create a new shift for {{object.first_name}} {{object.last_name}}</a> </li>#}
+</ul>
 
+<h1>List of Shifts</h1>
+<ul>
+{% for shift in object.shift_set.all %}
+    <li>Shift of the day: {{ shift.date }} </li>
+{% empty %}
+    <li>No shifts yet.</li>
+{% endfor %}
+</ul>

@@ -17,7 +17,7 @@ class Employee(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
 
-    #TODO: Verify if form validation will render this override of save useless
+    #TODO: Verify if form validation will handle this override of save useless
     def save(self, *args, **kwargs):
         """
         It only saves if the names are not blank
@@ -26,7 +26,9 @@ class Employee(models.Model):
             super().save(*args, **kwargs)  # Call the "real" save() method.
 
 #TODO: Update here with the Shift model
-# class Choice(models.Model):
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-#     choice_text = models.CharField(max_length=200)
-#     votes = models.IntegerField(default=0)
+class Shift(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    date = models.DateField()
+    start = models.TimeField()
+    end = models.TimeField()
+    break_length = models.IntegerField() 

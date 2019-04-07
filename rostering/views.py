@@ -1,7 +1,7 @@
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm
+from .forms import EmployeeForm, ShiftForm
 from .models import Employee
 # Create your views here.
 
@@ -46,6 +46,7 @@ class EmployeeDetailView(generic.DetailView):
     #     context['now'] = timezone.now()
     #     return context
 
+#TODO: Modify the form handle to use Form classes and Generic Views
 def employee_new(request):
 
     if request.method == "POST":
@@ -58,3 +59,22 @@ def employee_new(request):
         form = EmployeeForm()
         context = {'form': form}
         return render(request, 'rostering/employee_edit.html', context)
+
+#TODO: Modify the form handle to use Form classes and Generic Views
+def shift_new(request, pk):
+
+    if request.method == "POST":
+        form = ShiftForm(request.POST)
+        if form.is_valid():
+            shift = form.save(commit = False)
+            employee = Employee.objects.get(pk = pk)
+            shift.employee = employee
+            shift.save()
+            return redirect('employee_show', pk=employee.pk)
+        else:
+            #TODO: override is_valid to ensure form is always valid
+            print("hi the form was not valid, what is wrong? ")
+    else:
+        form = ShiftForm()
+        context = {'form': form}
+        return render(request, 'rostering/shift_edit.html', context)
