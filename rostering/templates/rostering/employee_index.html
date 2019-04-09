@@ -22,7 +22,10 @@
                         <td> {{employee.id}} </td>
                         <td> {{employee.first_name}} </td>
                         <td> {{employee.last_name}} </td>
+                        <td> <p><a href="{% url 'employee_show' employee.id %}">View user details </a></p> </td>
+                        
                     </tr>
+                    
                 {% endfor %}
             </tbody>
         </table>
