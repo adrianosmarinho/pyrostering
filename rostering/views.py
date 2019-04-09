@@ -5,13 +5,6 @@ from .forms import EmployeeForm, ShiftForm
 from .models import Employee
 # Create your views here.
 
-#old version of home (using functions)
-# def home(request):
-#     return render(request, 'rostering/home.html')
-#     #old version
-#     #return HttpResponse("Hello, world. You're at the polls index.")
-
-
 class HomePageView(generic.TemplateView):
     """
     A class to handle the home page view
@@ -49,12 +42,17 @@ class EmployeeDetailView(generic.DetailView):
 #TODO: Modify the form handle to use Form classes and Generic Views
 def employee_new(request):
 
+    print("employee_new: request.method = ", request.method)
+
     if request.method == "POST":
         form = EmployeeForm(request.POST)
         if form.is_valid():
             employee = form.save()
             #employee.save() #we probably dont need this line
             return redirect('employee_show', pk=employee.pk)
+        else:
+            # TODO: remove this block
+            print("employee_new: form is not valid")
     else:
         form = EmployeeForm()
         context = {'form': form}

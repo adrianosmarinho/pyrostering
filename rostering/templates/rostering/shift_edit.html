@@ -1,6 +1,9 @@
-{# {% extends 'blog/base.html' %} #}
+{% extends 'rostering/base.html' %} 
+
+{% block title %} PyRostering - Create a New Shift {% endblock %}
 
 {% block content %}
+    <h1>PyRostering</h1>
     <h2>New shift</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}

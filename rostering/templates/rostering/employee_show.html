@@ -1,15 +1,46 @@
-<h1>These are the shifts of: {{object.first_name}} {{object.last_name}}</h1>
-<!-- Display shifts, if any. Otherwise, shows a message -->
-<ul>
-    <li> <a href="{% url 'shift_new' object.id %}">Create a new shift for {{object.first_name}} {{object.last_name}}</a> </li>
-    {#<li> <a href="home">Create a new shift for {{object.first_name}} {{object.last_name}}</a> </li>#}
-</ul>
+{% extends "rostering/base.html" %}
 
-<h1>List of Shifts</h1>
-<ul>
-{% for shift in object.shift_set.all %}
-    <li>Shift of the day: {{ shift.date }} </li>
-{% empty %}
-    <li>No shifts yet.</li>
-{% endfor %}
-</ul>
+{% block title %} PyRostering - {{object.first_name}} {{object.last_name}} {% endblock %}
+
+{% block content %}
+    <h1>PyRostering</h1>
+    <h2>Employee: {{object.first_name}} {{object.last_name}}</h2>
+    <!-- Display shifts, if any. Otherwise, shows a message -->
+    <h3>List of Assigned Shifts</h3>
+    {% if object.shift_set.all %}
+        <table border = "1" >
+            <thead>
+                <tr>
+                    <th>Shift ID</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Break Length</th>
+                </tr>
+            </thead>
+
+            <tbody align="center">
+                {% for shift in object.shift_set.all %}
+                    <tr>
+                        <td> {{shift.id}} </td>
+                        <td> {{shift.date}} </td>
+                        <td> {{shift.start}} </td>
+                        <td> {{shift.end}} </td>
+                        <td> {{shift.break_length}} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are no shifts assigned for {{object.first_name}} {{object.last_name}} yet.</p>
+    {% endif %}
+
+    <!-- Link to create a new shift for the current employee -->
+    <p><a href="{% url 'shift_new' object.id %}">Create a new shift for {{object.first_name}} {{object.last_name}}</a></p>
+
+{% endblock %} {# block content #}
+
+
+
+
+
