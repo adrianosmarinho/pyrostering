@@ -61,18 +61,29 @@ def employee_new(request):
 #TODO: Modify the form handle to use Form classes and Generic Views
 def shift_new(request, pk):
 
-    if request.method == "POST":
-        form = ShiftForm(request.POST)
-        if form.is_valid():
-            shift = form.save(commit = False)
-            employee = Employee.objects.get(pk = pk)
-            shift.employee = employee
-            shift.save()
-            return redirect('employee_show', pk=employee.pk)
-        else:
-            #TODO: override is_valid to ensure form is always valid
-            print("hi the form was not valid, what is wrong? ")
+    form = ShiftForm(request.POST or None)
+       
+    if form.is_valid():
+        print(form.cleaned_data)
+        shift = form.save()
+        return redirect('employee_show', pk=pk)
+        #this lines work by i have commented to understand validation and get  post
+        #shift = form.save(commit = False)
+        #employee = Employee.objects.get(pk = pk)
+        #shift.employee = employee
+        #shift.save()
+        #return redirect('employee_show', pk=employee.pk)
+        #end of the block that works
     else:
-        form = ShiftForm()
-        context = {'form': form}
-        return render(request, 'rostering/shift_edit.html', context)
+        print("hi the form was not valid, what is wrong? ")
+        print(form.errors)
+    #old else block
+    # else:
+    #     form = ShiftForm()
+    #     context = {'form': form}
+    #     return render(request, 'rostering/shift_edit.html', context)
+    #end of old else block. it works
+    context = {
+        "form": form
+    }
+    return render(request, 'rostering/shift_edit.html', context)
