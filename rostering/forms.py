@@ -36,7 +36,6 @@ class ShiftForm(forms.ModelForm):
         if break_length <=60:
             return break_length
         else:
-            # raise forms.ValidationError("This is not a valid break")
             raise forms.ValidationError(
                 _('This is not a valid break value: %(value)s'),
                 code='invalid',
@@ -53,7 +52,6 @@ class ShiftForm(forms.ModelForm):
         time_difference_in_hours = time_difference / timedelta(hours=1)
 
         if ((time_difference_in_hours - (break_length/60))> max_shift_duration):
-            #raise forms.ValidationError("You cannot create a shift bigger than %(value)s hours")
             raise forms.ValidationError(
                 _('You cannot create a shift bigger than %(value)s hours'),
                 code='invalid',
