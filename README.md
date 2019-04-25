@@ -43,8 +43,6 @@ There are a few things to improve that I am currently work on.
 
 ### Backend
 
-- Shift validation: the specification required some minimal rules like no more than 5 consecutives shifts in a week or at least 10 hours of rest over night. That is my priority for the next iterations.
-- Shift validation includes form validation and proper display of custom error messages.
 - Support for an external mathematical module: I want to build a prototype of that by calling a module that reads the example data spreadsheets and automatic populate the database of PyRostering. Then, the same architecture can be used to call an external mathematical module.
 - Add unit and integration tests.
 

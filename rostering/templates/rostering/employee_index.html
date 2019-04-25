@@ -2,8 +2,11 @@
 
 {% block title %} PyRostering - Employee Index {% endblock %}
 
-{% block content %}
+{% block header %}
     <h1>PyRostering</h1>
+{% endblock %}
+
+{% block content %}
     <h2>List of Employees</h2>
     <!-- Display employees, if any. Otherwise, shows a message -->
     {% if object_list %}

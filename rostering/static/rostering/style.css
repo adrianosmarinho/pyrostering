@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+}
+
+h1{
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 4em;
+}
+
+#header{
+    background-color: cornflowerblue;
+    height: 100px;
+    padding-top: 2%;
+    
+}
+
+.center_content{
+    text-align: center;
+}

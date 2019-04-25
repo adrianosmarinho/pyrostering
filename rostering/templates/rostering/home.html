@@ -1,13 +1,14 @@
 {% extends "rostering/base.html" %}
 
-
-{% block content %}
+{% block header %}
     <h1>Welcome to PyRostering!</h1>
-    <p>You can:</p>
-    <ul>
-        <li> <a href="{% url 'employee_index' %}">Click here to see all registered employees</a> </li>
-        <li> <a href="{% url 'employee_new' %}">Click here to create a new employee</a> </li>
-    </ul>
+{% endblock %}
+{% block content %}
+    <div class="center_content" >
+        <p><a href="{% url 'employee_index' %}">Click here to see all registered employees</a> </p>
+        <p><a href="{% url 'employee_new' %}">Click here to create a new employee</a> </p>
+    </div>
+
 {% endblock %}
 
 
