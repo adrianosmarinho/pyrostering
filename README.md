@@ -24,6 +24,13 @@ Once the server is running, type http://127.0.0.1:8000/rostering/ (or whatever l
 Currently PyRostering is very simple. The home page will allow you to create new employees and also to see a list of employees.
 For each employee you can create a new shift. You can access the shifts of the employees by clicking on "view details" in the list of employees.
 
+### Current constraints on shifts
+
+- A break cannot be longer than 60 minutes;
+- An employee cannot work for more than 5 days in a row;
+- An employee cannot work more than 5 days in a 7-day window.
+- An employee cannot work more than 10 hours in a shift.
+
 ## ER Diagram for the PyRostering Database
 
 The ER Diagram for the PyRostering database can be found in:
@@ -38,6 +45,7 @@ There are a few things to improve that I am currently work on.
 - Shift validation: the specification required some minimal rules like no more than 5 consecutives shifts in a week or at least 10 hours of rest over night. That is my priority for the next iterations.
 - Shift validation includes form validation and proper display of custom error messages.
 - Support for an external mathematical module: I want to build a prototype of that by calling a module that reads the example data spreadsheets and automatic populate the database of PyRostering. Then, the same architecture can be used to call an external mathematical module.
+- Add unit and integration tests.
 
 ### Frontend
 
