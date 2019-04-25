@@ -30,6 +30,7 @@ For each employee you can create a new shift. You can access the shifts of the e
 - An employee cannot work for more than 5 days in a row;
 - An employee cannot work more than 5 days in a 7-day window.
 - An employee cannot work more than 10 hours in a shift.
+- An employee needs at least 10 hours of overnight rest.
 
 ## ER Diagram for the PyRostering Database
 
