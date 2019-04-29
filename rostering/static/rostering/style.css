@@ -1,22 +1,50 @@
 body{
     margin: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    
 }
 
 h1{
     margin: 0;
     color: white;
     text-align: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 4em;
+    font-size: 6em;
+}
+
+h2{
+    text-align: center;
+    /* font-size: 2em; */ /* the font-size is 2em by default in this case*/
 }
 
 #header{
     background-color: cornflowerblue;
-    height: 100px;
+    height: 150px;
     padding-top: 2%;
     
 }
 
+table,
+th,
+td {
+  border: solid black 1px;
+  padding: 0.2rem;
+  border-collapse: collapse;
+
+}
+
 .center_content{
     text-align: center;
+    font-size: 2em;
+    font-weight: bold;
 }
+
+table{
+    border: 1px solid black;
+   
+}
+
+table.center {
+    margin-left: auto; 
+    margin-right: auto;
+}
+

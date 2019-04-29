@@ -7,11 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Employee: {{object.first_name}} {{object.last_name}}</h2>
+    <h2>List of Assigned Shifts for {{object.first_name}} {{object.last_name}}</h2>
     <!-- Display shifts, if any. Otherwise, shows a message -->
-    <h3>List of Assigned Shifts</h3>
     {% if object.shift_set.all %}
-        <table border = "1" >
+        <table class="center" border = "1" >
             <thead>
                 <tr>
                     <th>Shift ID</th>
