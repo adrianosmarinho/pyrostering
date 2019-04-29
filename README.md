@@ -44,11 +44,13 @@ There are a few things to improve that I am currently work on.
 ### Backend
 
 - Support for an external mathematical module: I want to build a prototype of that by calling a module that reads the example data spreadsheets and automatic populate the database of PyRostering. Then, the same architecture can be used to call an external mathematical module.
+- Selection of employee in the new shift form needs to be fixed to display only the corresponding employee.
 - Add unit and integration tests.
 
 ### Frontend
 
 - Using css and bootstrap to improve the look and feel of PyRostering.
+- Buttons need to be styled
 
 ### Deployment
 
