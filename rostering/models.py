@@ -31,7 +31,7 @@ class Employee(models.Model):
 
 class Shift(models.Model):
     employee     = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    date         = models.DateField(unique = True)
+    date         = models.DateField()
     start        = models.TimeField()
     end          = models.TimeField()
     break_length = models.IntegerField()
